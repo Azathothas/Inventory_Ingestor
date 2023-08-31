@@ -3,7 +3,7 @@
 # For debug
 #set -x
 #Usage
-# Make sure to have a new tmux session running: 
+# Make sure to have a new tmux session running (This preserves accidental closing of panes & Terminals) 
 # sudo apt install tmux -y ; tmux new-session -s "puredns"
 # bash <(cat $GITPOD_REPO_ROOT/.github/scripts/puredns_setup_gitpod.sh)
 # bash <(curl -qfsSL https://raw.githubusercontent.com/Azathothas/Inventory_Ingestor/main/.github/scripts/puredns_setup_gitpod.sh)
