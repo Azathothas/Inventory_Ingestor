@@ -31,6 +31,9 @@ anew -h
 #btop (For Observability & Stats)
 sudo eget "https://raw.githubusercontent.com/Azathothas/Toolpacks/main/x86_64/btop" --to "/usr/local/bin/btop"
 btop -h
+#croc
+sudo eget "https://raw.githubusercontent.com/Azathothas/Toolpacks/main/x86_64/croc" --to "/usr/local/bin/croc"
+croc -h
 #inscope (For Scope)
 sudo eget "https://raw.githubusercontent.com/Azathothas/Toolpacks/main/x86_64/inscope" --to "/usr/local/bin/inscope"
 inscope -h
