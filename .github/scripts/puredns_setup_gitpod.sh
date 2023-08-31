@@ -4,7 +4,7 @@
 #set -x
 #Usage
 # bash <(cat $GITPOD_REPO_ROOT/.github/scripts/puredns_setup_gitpod.sh)
-# 
+# bash <(https://raw.githubusercontent.com/Azathothas/Inventory_Ingestor/main/.github/scripts/puredns_setup_gitpod.sh)
 #----------------------------------------------------------------------------#
 # Install
 # Coreutils & Deps 
