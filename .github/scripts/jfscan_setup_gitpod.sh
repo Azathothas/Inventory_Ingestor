@@ -5,8 +5,8 @@
 #Usage
 # Make sure to have a new tmux session running (This preserves accidental closing of panes & Terminals) 
 # sudo apt install tmux -y ; tmux new-session -s "puredns"
-# bash <(cat $GITPOD_REPO_ROOT/.github/scripts/puredns_setup_gitpod.sh)
-# bash <(curl -qfsSL https://raw.githubusercontent.com/Azathothas/Inventory_Ingestor/main/.github/scripts/puredns_setup_gitpod.sh)
+# bash <(cat $GITPOD_REPO_ROOT/.github/scripts/jfscan_setup_gitpod.sh)
+# bash <(curl -qfsSL https://raw.githubusercontent.com/Azathothas/Inventory_Ingestor/main/.github/scripts/jfscan_setup_gitpod.sh)
 #----------------------------------------------------------------------------#
 # Install
 # Coreutils & Deps 
@@ -58,10 +58,10 @@ yq -h
 # Download & Run 
 # ENV:VARS are autoset from https://gitpod.io/user/variables
 #Download
-curl -qfsSL "https://$INVENTORY_REPO_USER:$INVENTORY_REPO_TOKEN@raw.githubusercontent.com/Azathothas/Inventory/main/.github/scripts/puredns_gitpod.sh" -o "./puredns_gitpod.sh"
+#curl -qfsSL "https://$INVENTORY_REPO_USER:$INVENTORY_REPO_TOKEN@raw.githubusercontent.com/Azathothas/Inventory/main/.github/scripts/puredns_gitpod.sh" -o "./puredns_gitpod.sh"
 #Dos2unix + Chmod
-dos2unix "./puredns_gitpod.sh" ; sudo chmod +xwr "./puredns_gitpod.sh"
+#dos2unix "./puredns_gitpod.sh" ; sudo chmod +xwr "./puredns_gitpod.sh"
 #Run
-clear ; bash "./puredns_gitpod.sh"
+#clear ; bash "./puredns_gitpod.sh"
 #EOF
 #----------------------------------------------------------------------------#
