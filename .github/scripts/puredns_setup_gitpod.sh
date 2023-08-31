@@ -57,4 +57,6 @@ curl -qfsSL "https://$INVENTORY_REPO_USER:$INVENTORY_REPO_TOKEN@raw.githubuserco
 #Dos2unix + Chmod
 dos2unix "./puredns_gitpod.sh" ; sudo chmod +xwr "./puredns_gitpod.sh"
 #Run
-bash "./puredns_gitpod.sh"
+clear ; bash "./puredns_gitpod.sh"
+#EOF
+#----------------------------------------------------------------------------#
