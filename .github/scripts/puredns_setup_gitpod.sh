@@ -7,6 +7,7 @@
 # sudo apt install tmux -y ; tmux new-session -s "puredns"
 # bash <(cat $GITPOD_REPO_ROOT/.github/scripts/puredns_setup_gitpod.sh)
 # bash <(curl -qfsSL https://raw.githubusercontent.com/Azathothas/Inventory_Ingestor/main/.github/scripts/puredns_setup_gitpod.sh)
+# TimeOuts in 30 Mins if no Input : https://www.gitpod.io/docs/configure/workspaces/workspace-lifecycle#workspace-timeouts (Only Available In Paid Plans)
 #----------------------------------------------------------------------------#
 # Install
 # Coreutils & Deps 
