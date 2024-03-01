@@ -20,37 +20,37 @@ pip install apprise ; apprise -h
 pip install archey4
 #-------------------------#
 #eget (For Binaries)
-sudo curl -qfsSL "https://raw.githubusercontent.com/Azathothas/Toolpacks/main/x86_64/eget" -o "/usr/local/bin/eget" && sudo chmod +xwr "/usr/local/bin/eget"
+sudo curl -qfsSL "https://bin.ajam.dev/x86_64_Linux/eget" -o "/usr/local/bin/eget" && sudo chmod +xwr "/usr/local/bin/eget"
 # 7z (Archive)
 sudo rm /usr/bin/7z 2>/dev/null ; sudo rm /usr/local/bin/7z 2>/dev/null
-sudo eget "https://raw.githubusercontent.com/Azathothas/Toolpacks/main/x86_64/7z" --to "/usr/local/bin/7z"
+sudo eget "https://bin.ajam.dev/x86_64_Linux/7z" --to "/usr/local/bin/7z"
 7z -h
 #anew (tee -a)
-sudo eget "https://raw.githubusercontent.com/Azathothas/Toolpacks/main/x86_64/anew" --to "/usr/local/bin/anew"
+sudo eget "https://bin.ajam.dev/x86_64_Linux/anew" --to "/usr/local/bin/anew"
 anew -h
 #btop (For Observability & Stats)
-sudo eget "https://raw.githubusercontent.com/Azathothas/Toolpacks/main/x86_64/btop" --to "/usr/local/bin/btop"
+sudo eget "https://bin.ajam.dev/x86_64_Linux/btop" --to "/usr/local/bin/btop"
 btop -h
 #croc
-sudo eget "https://raw.githubusercontent.com/Azathothas/Toolpacks/main/x86_64/croc" --to "/usr/local/bin/croc"
+sudo eget "https://bin.ajam.dev/x86_64_Linux/croc" --to "/usr/local/bin/croc"
 croc -h
 #inscope (For Scope)
-sudo eget "https://raw.githubusercontent.com/Azathothas/Toolpacks/main/x86_64/inscope" --to "/usr/local/bin/inscope"
+sudo eget "https://bin.ajam.dev/x86_64_Linux/inscope" --to "/usr/local/bin/inscope"
 inscope -h
 #massdns (For PureDNS|ShuffleDNS)
-sudo eget "https://raw.githubusercontent.com/Azathothas/Toolpacks/main/x86_64/massdns" --to "/usr/local/bin/massdns"
+sudo eget "https://bin.ajam.dev/x86_64_Linux/massdns" --to "/usr/local/bin/massdns"
 massdns -h
 #resDNS (Main, should auto install other lacking deps)
 sudo eget "https://raw.githubusercontent.com/Azathothas/Arsenal/main/resdns/resdns.sh" --to "/usr/local/bin/resdns" ; sudo chmod +xwr "/usr/local/bin/resdns"
 resdns -h
 #scopeview (For Scope)
-sudo eget "https://raw.githubusercontent.com/Azathothas/Toolpacks/main/x86_64/scopeview" --to "/usr/local/bin/scopeview"
+sudo eget "https://bin.ajam.dev/x86_64_Linux/scopeview" --to "/usr/local/bin/scopeview"
 scopeview -h
 #shuffledns (Not Really Needed)
-sudo eget "https://raw.githubusercontent.com/Azathothas/Toolpacks/main/x86_64/shuffledns" --to "/usr/local/bin/shuffledns"
+sudo eget "https://bin.ajam.dev/x86_64_Linux/shuffledns" --to "/usr/local/bin/shuffledns"
 shuffledns -h
 #yq (For Yaml)
-sudo eget "https://raw.githubusercontent.com/Azathothas/Toolpacks/main/x86_64/yq" --to "/usr/local/bin/yq"
+sudo eget "https://bin.ajam.dev/x86_64_Linux/yq" --to "/usr/local/bin/yq"
 yq -h
 #----------------------------------------------------------------------------#
 
