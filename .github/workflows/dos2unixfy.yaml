@@ -21,7 +21,7 @@ jobs:
       
     steps:        
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           path: main
 
@@ -40,7 +40,7 @@ jobs:
      #      cd "$GITHUB_WORKSPACE/main" && git pull origin main
      #   continue-on-error: true
 
-      - uses: stefanzweifel/git-auto-commit-action@v4
+      - uses: stefanzweifel/git-auto-commit-action@v5
         with:
           repository: ./main        
           commit_user_name: Azathothas # defaults to "github-actions[bot]"
