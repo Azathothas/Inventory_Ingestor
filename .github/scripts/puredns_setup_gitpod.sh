@@ -28,7 +28,8 @@ sudo eget "https://bin.ajam.dev/x86_64_Linux/7z" --to "/usr/local/bin/7z"
 7z -h
 #anew (tee -a)
 sudo eget "https://bin.ajam.dev/x86_64_Linux/anew" --to "/usr/local/bin/anew"
-anew -h
+sudo eget "https://bin.ajam.dev/x86_64_Linux/anew-rs" --to "/usr/local/bin/anew-rs"
+anew-rs -h
 #btop (For Observability & Stats)
 sudo eget "https://bin.ajam.dev/x86_64_Linux/btop" --to "/usr/local/bin/btop"
 btop -h
