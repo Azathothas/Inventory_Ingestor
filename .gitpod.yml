@@ -1,7 +1,12 @@
 ## saved as .gitpod.yml in root repo-dir
+## Start :: 
+## This will create two terminals : [1: Start --> Live Preview || 2:Stop --> Auto Stops after Start has Finished]
+## Assumes correct env:vars have been set at : https://gitpod.io/user/variables
+## Live View of Workspaces :: https://gitpod.io/workspaces 
 ## DOCS :: https://www.gitpod.io/docs/references/gitpod-yml
 ##      :: https://www.gitpod.io/docs/configure/workspaces/tasks
 tasks:
+  #Main Tasks
     - name: Start
       before: |
           cd /workspace/Inventory_Ingestor
@@ -12,6 +17,16 @@ tasks:
           #tmux new-session -s "puredns" -d "bash <(curl -qfsSL https://raw.githubusercontent.com/Azathothas/Inventory_Ingestor/main/.github/scripts/puredns_setup_gitpod.sh) ; exec $SHELL"
           bash <(curl -qfsSL "https://raw.githubusercontent.com/Azathothas/Inventory_Ingestor/main/.github/scripts/puredns_setup_gitpod.sh") && gp sync-done "completed"
 
+  #Btop Stats
+    - name: btop
+      init: sleep 15
+      command: |
+          btop
+
+  #Cleanup
     - name: Stop
       init: gp sync-await completed
-      command: gp stop
+      command: |
+          gp tasks list
+          gp top
+          gp stop
