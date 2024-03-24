@@ -1,0 +1,17 @@
+## saved as .gitpod.yml in root repo-dir
+## DOCS :: https://www.gitpod.io/docs/references/gitpod-yml
+##      :: https://www.gitpod.io/docs/configure/workspaces/tasks
+tasks:
+    - name: Start
+      before: |
+          cd /workspace/Inventory_Ingestor
+      init: |
+          sudo apt-get update -y && sudo apt-get install tmux -y
+      command: |
+          #ENV VARS are injected & setup automatically
+          #tmux new-session -s "puredns" -d "bash <(curl -qfsSL https://raw.githubusercontent.com/Azathothas/Inventory_Ingestor/main/.github/scripts/puredns_setup_gitpod.sh) ; exec $SHELL"
+          bash <(curl -qfsSL "https://raw.githubusercontent.com/Azathothas/Inventory_Ingestor/main/.github/scripts/puredns_setup_gitpod.sh") && gp sync-done "completed"
+
+    - name: Stop
+      init: gp sync-await completed
+      command: gp stop
