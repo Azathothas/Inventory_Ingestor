@@ -1,11 +1,18 @@
 ## saved as .gitpod.yml in root repo-dir
-## Start :: 
+## Start (After exporting GITPOD_TOKEN) :: bash <(curl -qfsSL "https://raw.githubusercontent.com/Azathothas/Inventory_Ingestor/main/.gitpod.sh")
 ## This will create two terminals : [1: Start --> Live Preview || 2:Stop --> Auto Stops after Start has Finished]
 ## Assumes correct env:vars have been set at : https://gitpod.io/user/variables
 ## Live View of Workspaces :: https://gitpod.io/workspaces 
 ## DOCS :: https://www.gitpod.io/docs/references/gitpod-yml
 ##      :: https://www.gitpod.io/docs/configure/workspaces/tasks
 tasks:
+  #Configure
+    - name: configure
+      init: sleep 2
+      command: |
+          gp timeout set 30m 2>/dev/null
+          gp timeout show
+
   #Main Tasks
     - name: Start
       before: |
@@ -19,9 +26,15 @@ tasks:
 
   #Btop Stats
     - name: btop
-      init: sleep 15
+      init: sleep 45
       command: |
           btop
+
+  #PTS/TTY Stats
+    - name: pts-tty
+      init: sleep 2
+      command: |
+          while true; do sudo ps -ef | grep 'tty\|pts'; sleep 1; done
 
   #Cleanup
     - name: Stop
