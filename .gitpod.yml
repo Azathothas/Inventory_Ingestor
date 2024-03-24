@@ -34,7 +34,7 @@ tasks:
     - name: pts-tty
       init: sleep 2
       command: |
-          while true; do sudo ps -ef | grep 'tty\|pts'; sleep 1; done
+          while true; do sudo ps -ef | grep 'tty\|pts'; gp top ; sleep 1; done
 
   #Cleanup
     - name: Stop
