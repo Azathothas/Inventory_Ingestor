@@ -5,8 +5,12 @@ if [ -z "$GITPOD_TOKEN" ] || [ -z "${GITPOD_TOKEN+x}" ]; then
    echo -e "\n[-] FATAL: Gitpod Token (GITPOD_TOKEN) is not exported (Maybe Empty?)\n"
   exit 1
 fi
-if ! command -v curl &>/dev/null || ! command -v tmux &>/dev/null || ! command -v gitpod &>/dev/null ; then
-   echo -e "\n[-] FATAL: Install curl gitpod & tmux :: https://bin.ajam.dev/$(uname -m)/\n"
+if ! command -v curl &>/dev/null || ! command -v gitpod &>/dev/null || ! command -v jq &>/dev/null || ! command -v ssh &>/dev/null || ! command -v tmux &>/dev/null ; then
+   echo -e "\n[-] FATAL: Install curl gitpod jq ssh tmux :: https://bin.ajam.dev/$(uname -m)/\n"
+   echo 'sudo apt-get update -y && sudo apt-get install coreutils curl moreutils openssh-client ssh tmux util-linux -y'
+   echo 'sudo curl -qfsSL "https://bin.ajam.dev/$(uname -m)/gitpod" -o "/usr/local/bin/gitpod" && sudo chmod +x "/usr/local/bin/gitpod"'
+   echo 'sudo curl -qfsSL "https://bin.ajam.dev/$(uname -m)/jq" -o "/usr/local/bin/jq" && sudo chmod +x "/usr/local/bin/jq"'
+ exit 1  
 fi
 
 #Configure & Setup GitPOD
