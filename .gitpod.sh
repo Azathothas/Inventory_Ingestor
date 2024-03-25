@@ -14,10 +14,10 @@ if ! command -v curl &>/dev/null || ! command -v gitpod &>/dev/null || ! command
 fi
 
 #Configure & Setup GitPOD
+gitpod login --verbose --token "$GITPOD_TOKEN" && gitpod whoami
 gitpod config set --verbose --autoupdate="false"
 gitpod config set --verbose --telemetry="false"
 gitpod config set --verbose --token="$GITPOD_TOKEN"
-gitpod login --verbose --token "$GITPOD_TOKEN" && gitpod whoami
 gitpod config get
 
 #Stop/Delete (I)
@@ -54,8 +54,9 @@ echo -e "\n[+] Open (Browser) :: $POD_WORKSPACE_URL"
 echo -e "[+] Open DevTools Console (Ctrl+Shift+I) >> Copy Paste:\n"
 echo 'let panes=document.querySelectorAll(".action-label"),terminalTabs=document.querySelectorAll(".monaco-list-row"),currentIndex=0;function clickPane(){panes.length>0?(panes[currentIndex].click(),currentIndex=(currentIndex+1)%panes.length,scheduleNextClick()):console.log("No panes found.")}function switchTerminal(){if(terminalTabs.length>0){let e=terminalTabs[currentIndex];e?(e.click(),currentIndex=(currentIndex+1)%terminalTabs.length):console.log("No terminal tab found at index:",currentIndex)}else console.log("No terminal tabs found.")}function scheduleNextClick(){let e=Math.floor(12001*Math.random())+5e3;setTimeout((function(){clickPane(),switchTerminal()}),e)}function moveMouseToRandomPosition(){let e=window.innerWidth,n=window.innerHeight,t=Math.floor(Math.random()*e),o=Math.floor(Math.random()*n);window.scrollTo(t,o)}function sendKeyG(){let e=document.activeElement;e.value+="g";let n=new KeyboardEvent("keydown",{key:"Enter",keyCode:13,code:"Enter"});e.dispatchEvent(n);let t=new KeyboardEvent("keydown",{key:"ArrowUp",keyCode:38,code:"ArrowUp"});e.dispatchEvent(t);let o=new KeyboardEvent("keydown",{key:"g",keyCode:71,code:"KeyG"});e.dispatchEvent(o);let l=new KeyboardEvent("keydown",{key:"ArrowDown",keyCode:40,code:"ArrowDown"});e.dispatchEvent(l);let r=new KeyboardEvent("keydown",{key:"0",keyCode:48,code:"Digit0"});e.dispatchEvent(r)}setInterval(moveMouseToRandomPosition,500),setInterval(sendKeyG,2e3),scheduleNextClick();'
 echo -e "\n[+] You can Minimize Browser OR User another Tab BUT DO NOT CLOSE GITPOD TAB (Closing Developer Console is Okay)"
+echo -e "[+] OPTIONAL : Drag the Terminal Winndow to Max (So btop can work)"
 echo -e "[+] You have 100 Seconds to do this (PureDNS will make ws connection unstable)"
-echo -e "[+] Workspaces will be auto Stopped/Deleted after Tasks Finish Executing."
+echo -e "[+] Workspaces will be auto Stopped/Deleted after Tasks Finish Executing.\n"
 # #Stop/Delete (II)
 # echo -e "\n[+] Stopping/Removing Workspaces..."
 # gitpod workspace list | awk 'NR>1 {print $1}' | xargs -I {} gitpod workspace stop {} --dont-wait --verbose
