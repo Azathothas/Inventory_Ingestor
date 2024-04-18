@@ -26,7 +26,7 @@ tasks:
 
   #Btop Stats
     - name: btop
-      init: sleep 45
+      init: sleep 300
       command: |
           btop
 
