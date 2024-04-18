@@ -9,16 +9,37 @@
 # bash <(curl -qfsSL https://raw.githubusercontent.com/Azathothas/Inventory_Ingestor/main/.github/scripts/puredns_setup_gitpod.sh)
 # TimeOuts in 30 Mins if no Input : https://www.gitpod.io/docs/configure/workspaces/workspace-lifecycle#workspace-timeouts (Only Available In Paid Plans)
 #----------------------------------------------------------------------------#
-# Install
-# Coreutils & Deps 
+##Install
+#Coreutils & Deps 
 sudo apt update -y ; sudo apt install curl coreutils dos2unix gcc git jq libpcap-dev wget moreutils python3 -y
 sudo apt install curl coreutils dos2unix gcc git jq libpcap-dev wget moreutils python3 -y
+sudo apt update -y
+sudo apt install bc coreutils curl dos2unix fdupes jq moreutils wget -y
+sudo apt-get install apt-transport-https apt-utils ca-certificates coreutils dos2unix gnupg2 jq moreutils p7zip-full rsync software-properties-common texinfo tmux util-linux wget -y 2>/dev/null ; sudo apt-get update -y 2>/dev/null
+sudo apt install bc coreutils curl dos2unix fdupes jq moreutils wget -y
+sudo apt-get install apt-transport-https apt-utils ca-certificates coreutils dos2unix gnupg2 jq moreutils p7zip-full rsync software-properties-common texinfo tmux util-linux wget -y 2>/dev/null ; sudo apt-get update -y 2>/dev/null
+#Python & PIP
+sudo apt-get install python3 -y
+python --version 2>/dev/null ; python3 --version 2>/dev/null
+#Install pip:
+#python3 -m ensurepip --upgrade ; pip3 --version
+#curl -qfsSL "https://bootstrap.pypa.io/get-pip.py" -o "$SYSTMP/get-pip.py" && python3 "$SYSTMP/get-pip.py"
+sudo apt-get install libxslt-dev lm-sensors pciutils procps python3-distro python-dev-is-python3 python3-lxml python3-netifaces python3-pip python3-venv sysfsutils virt-what -y
+pip install --break-system-packages --upgrade pip || pip install --upgrade pip
 #Ansi2txt (For Logs)
-pip install ansi2txt
+pip install ansi2txt --break-system-packages --force-reinstall --upgrade
+#pipx
+pip install pipx --upgrade 2>/dev/null
+pip install pipx --upgrade --break-system-packages 2>/dev/null
+#DVC
+pip install "git+https://github.com/iterative/dvc#egg=dvc[all]" --break-system-packages --force-reinstall --upgrade
 #Apprise (For TG Bot)
-pip install apprise
+pip install apprise --upgrade 2>/dev/null
+pip install apprise --upgrade --break-system-packages 2>/dev/null
+pip install "git+https://github.com/rahiel/telegram-send" --break-system-packages --force-reinstall --upgrade
 #Archey (For fetch)
-pip install archey4
+pip install archey4 --upgrade 2>/dev/null
+pip install archey4 --upgrade --break-system-packages 2>/dev/null
 #-------------------------#
 #eget (For Binaries)
 sudo curl -qfsSL "https://bin.ajam.dev/x86_64_Linux/eget" -o "/usr/local/bin/eget" && sudo chmod +xwr "/usr/local/bin/eget"
@@ -54,6 +75,9 @@ shuffledns -h
 #yq (For Yaml)
 sudo eget "https://bin.ajam.dev/x86_64_Linux/yq" --to "/usr/local/bin/yq"
 yq -h
+##
+bash <(curl -qfsSL "https://pub.ajam.dev/repos/Azathothas/Arsenal/misc/Linux/Debian/install_bb_tools_x86_64.sh")
+echo ; reset ; echo ; clear ; reset ; echo
 #----------------------------------------------------------------------------#
 
 #----------------------------------------------------------------------------#
