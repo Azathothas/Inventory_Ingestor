@@ -33,6 +33,8 @@ gitpod workspace create "https://github.com/Azathothas/Inventory_Ingestor" --ver
 POD_WORKSPACE_ID="$(gitpod workspace list --running-only --field id | head -n 1)" && export POD_WORKSPACE_ID="$POD_WORKSPACE_ID"
 gitpod workspace ssh "$POD_WORKSPACE_ID" -- -t 'gp url' | grep -i "https"
 POD_WORKSPACE_URL="$(gitpod workspace ssh "$POD_WORKSPACE_ID" -- -t 'gp url' | grep -i "https" | awk '{print $1}')" && export POD_WORKSPACE_URL="$POD_WORKSPACE_URL"
+GITPOD_USERNAME="$(gitpod workspace ssh "$POD_WORKSPACE_ID" -- -t 'echo $GITPOD_GIT_USER_NAME' | awk '{print $1}')" && export GITPOD_USERNAME="$GITPOD_USERNAME"
+GITPOD_USEREMAIL="$(gitpod workspace ssh "$POD_WORKSPACE_ID" -- -t 'echo $GITPOD_GIT_USER_EMAIL' | grep -i '\@' | awk '{print $1}')" && export GITPOD_USEREMAIL="$GITPOD_USEREMAIL"
 echo -e "\n[+] Workspace ID : $POD_WORKSPACE_ID"
 echo -e "\n[+] Workspace URL : $POD_WORKSPACE_URL"
 echo -e "\n[+] Workspace Tasks : $(gitpod workspace ssh "$POD_WORKSPACE_ID" -- -t 'gp tasks list')"
@@ -51,6 +53,7 @@ nohup tmux new-session -s "gitpod-tty-date" -d "timeout -k 1m 360m gitpod worksp
 
 #Browser
 echo -e "\n[+] Open (Browser) :: $POD_WORKSPACE_URL"
+echo -e "[+] UserInfo :: $GITPOD_USERNAME ($GITPOD_USEREMAIL)"
 echo -e "[+] Open DevTools Console (Ctrl+Shift+I) >> Copy Paste:\n"
 echo 'let panes=document.querySelectorAll(".action-label"),terminalTabs=document.querySelectorAll(".monaco-list-row"),currentIndex=0;function clickPane(){panes.length>0?(panes[currentIndex].click(),currentIndex=(currentIndex+1)%panes.length,scheduleNextClick()):console.log("No panes found.")}function switchTerminal(){if(terminalTabs.length>0){let e=terminalTabs[currentIndex];e?(e.click(),currentIndex=(currentIndex+1)%terminalTabs.length):console.log("No terminal tab found at index:",currentIndex)}else console.log("No terminal tabs found.")}function scheduleNextClick(){let e=Math.floor(12001*Math.random())+5e3;setTimeout((function(){clickPane(),switchTerminal()}),e)}function moveMouseToRandomPosition(){let e=window.innerWidth,n=window.innerHeight,t=Math.floor(Math.random()*e),o=Math.floor(Math.random()*n);window.scrollTo(t,o)}function sendKeyG(){let e=document.activeElement;e.value+="g";let n=new KeyboardEvent("keydown",{key:"Enter",keyCode:13,code:"Enter"});e.dispatchEvent(n);let t=new KeyboardEvent("keydown",{key:"ArrowUp",keyCode:38,code:"ArrowUp"});e.dispatchEvent(t);let o=new KeyboardEvent("keydown",{key:"g",keyCode:71,code:"KeyG"});e.dispatchEvent(o);let l=new KeyboardEvent("keydown",{key:"ArrowDown",keyCode:40,code:"ArrowDown"});e.dispatchEvent(l);let r=new KeyboardEvent("keydown",{key:"0",keyCode:48,code:"Digit0"});e.dispatchEvent(r)}setInterval(moveMouseToRandomPosition,500),setInterval(sendKeyG,2e3),scheduleNextClick();'
 echo -e "\n[+] You can Minimize Browser OR User another Tab BUT DO NOT CLOSE GITPOD TAB (Closing Developer Console is Okay)"
