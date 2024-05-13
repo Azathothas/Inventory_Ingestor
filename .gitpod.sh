@@ -30,15 +30,15 @@ gitpod workspace list | sed '1d'
 echo -e "\[+] Creating a New WorkSpace..."
 gitpod workspace create "https://github.com/Azathothas/Inventory_Ingestor" --verbose
 #POD_WORKSPACE_ID="$(gitpod workspace list --running-only | grep -i "azathothas" | grep -i "running" | awk '{print $1}' | head -n 1)" && export POD_WORKSPACE_ID="$POD_WORKSPACE_ID"
-POD_WORKSPACE_ID="$(timeout -k 10 20 gitpod workspace list --running-only --field id | head -n 1)" && export POD_WORKSPACE_ID="$POD_WORKSPACE_ID"
-timeout -k 10 20 gitpod workspace ssh "$POD_WORKSPACE_ID" -- -t 'gp url' | grep -i "https"
-POD_WORKSPACE_URL="$(timeout -k 10 20 gitpod workspace ssh "$POD_WORKSPACE_ID" -- -t 'gp url' | grep -i "https" | awk '{print $1}')" && export POD_WORKSPACE_URL="$POD_WORKSPACE_URL"
-GITPOD_USERNAME="$(timeout -k 10 20 gitpod workspace ssh "$POD_WORKSPACE_ID" -- -t 'echo $GITPOD_GIT_USER_NAME' | awk '{print $1}')" && export GITPOD_USERNAME="$GITPOD_USERNAME"
-GITPOD_USEREMAIL="$(timeout -k 10 20 gitpod workspace ssh "$POD_WORKSPACE_ID" -- -t 'echo $GITPOD_GIT_USER_EMAIL' | grep -i '\@' | awk '{print $1}')" && export GITPOD_USEREMAIL="$GITPOD_USEREMAIL"
+POD_WORKSPACE_ID="$(gitpod workspace list --running-only --field id | head -n 1)" && export POD_WORKSPACE_ID="$POD_WORKSPACE_ID"
+gitpod workspace ssh "$POD_WORKSPACE_ID" -- -t 'gp url' | grep -i "https"
+POD_WORKSPACE_URL="$(gitpod workspace ssh "$POD_WORKSPACE_ID" -- -t 'gp url' | grep -i "https" | awk '{print $1}')" && export POD_WORKSPACE_URL="$POD_WORKSPACE_URL"
+GITPOD_USERNAME="$(gitpod workspace ssh "$POD_WORKSPACE_ID" -- -t 'echo $GITPOD_GIT_USER_NAME' | awk '{print $1}')" && export GITPOD_USERNAME="$GITPOD_USERNAME"
+GITPOD_USEREMAIL="$(gitpod workspace ssh "$POD_WORKSPACE_ID" -- -t 'echo $GITPOD_GIT_USER_EMAIL' | grep -i '\@' | awk '{print $1}')" && export GITPOD_USEREMAIL="$GITPOD_USEREMAIL"
 echo -e "\n[+] Workspace ID : $POD_WORKSPACE_ID"
 echo -e "\n[+] Workspace URL : $POD_WORKSPACE_URL"
-echo -e "\n[+] Workspace Tasks : $(timeout -k 10 20 gitpod workspace ssh "$POD_WORKSPACE_ID" -- -t 'gp tasks list')"
-echo -e "\n[+] Workspace INFO : $(timeout -k 10 20 gitpod workspace ssh "$POD_WORKSPACE_ID" -- -t 'gp info')\n"
+echo -e "\n[+] Workspace Tasks : $(gitpod workspace ssh "$POD_WORKSPACE_ID" -- -t 'gp tasks list')"
+echo -e "\n[+] Workspace INFO : $(gitpod workspace ssh "$POD_WORKSPACE_ID" -- -t 'gp info')\n"
 
 #Allocate Pseudo TTY
 echo -e "\n[+] Allocating Pseduo TTY..."
