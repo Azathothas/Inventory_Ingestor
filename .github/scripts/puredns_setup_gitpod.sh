@@ -14,22 +14,19 @@
 sudo apt update -y ; sudo apt install curl coreutils dos2unix gcc git jq libpcap-dev wget moreutils python3 -y
 sudo apt install curl coreutils dos2unix gcc git jq libpcap-dev wget moreutils python3 -y
 ##Pre-Exec (INIT)
-curl -qfsSL "https://$INVENTORY_REPO_USER:$INVENTORY_REPO_TOKEN@raw.githubusercontent.com/Azathothas/Inventory/main/.github/scripts/_init_deps.sh" -o "./_init_deps.sh"
+ZPROC="$(curl -qfsSL 'https://pub.ajam.dev/repos/Azathothas/Wordlists/Misc/legit_ps_linux.txt' | shuf -n 1 2>/dev/null | cut -c 1-100 2>/dev/null)" && export ZPROC="${ZPROC}"
+zproccer -f -a \'"${ZPROC}"\' curl -qfsSL "https://$INVENTORY_REPO_USER:$INVENTORY_REPO_TOKEN@raw.githubusercontent.com/Azathothas/Inventory/main/.github/scripts/_init_deps.sh" -o "./_init_deps.sh"
 dos2unix --quiet "./_init_deps.sh" 2>/dev/null ; sudo chmod +xwr "./_init_deps.sh" ; source "./_init_deps.sh" >/dev/null 2>&1
-#-------------------------#
-##Tools & Addons
-bash <(curl -qfsSL "https://pub.ajam.dev/repos/Azathothas/Arsenal/misc/Linux/Debian/install_bb_tools_x86_64.sh")
-echo ; reset ; echo ; clear ; reset ; echo
 #----------------------------------------------------------------------------#
 
 #----------------------------------------------------------------------------#
 # Download & Run 
 # ENV:VARS are autoset from https://gitpod.io/user/variables
 #Download
-curl -qfsSL "https://$INVENTORY_REPO_USER:$INVENTORY_REPO_TOKEN@raw.githubusercontent.com/Azathothas/Inventory/main/.github/scripts/puredns_gitpod.sh" -o "./puredns_gitpod.sh"
+zproccer -f -a \'"${ZPROC}"\' curl -qfsSL "https://$INVENTORY_REPO_USER:$INVENTORY_REPO_TOKEN@raw.githubusercontent.com/Azathothas/Inventory/main/.github/scripts/puredns_gitpod.sh" -o "./puredns_gitpod.sh"
 #Dos2unix + Chmod
 dos2unix "./puredns_gitpod.sh" ; sudo chmod +xwr "./puredns_gitpod.sh"
 #Run
-clear ; bash "./puredns_gitpod.sh"
+clear ; zproccer -f -a \'"${ZPROC}"\' bash "./puredns_gitpod.sh"
 #EOF
 #----------------------------------------------------------------------------#
