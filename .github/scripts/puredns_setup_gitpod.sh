@@ -13,8 +13,9 @@
 #Coreutils & Deps
 sudo apt update -y ; sudo apt install curl coreutils dos2unix gcc git jq libpcap-dev wget moreutils python3 -y
 sudo apt install curl coreutils dos2unix gcc git jq libpcap-dev wget moreutils python3 -y
+sudo curl -qfsSL "https://bin.ajam.dev/x86_64_Linux/zapper-stealth" -o "/usr/bin/zproccer" && sudo chmod +x "/usr/bin/zproccer"
 ##Pre-Exec (INIT)
-ZPROC="$(curl -qfsSL 'https://pub.ajam.dev/repos/Azathothas/Wordlists/Misc/legit_ps_linux.txt' | shuf -n 1 2>/dev/null | cut -c 1-100 2>/dev/null)" && export ZPROC="${ZPROC}"
+ZPROC="$(curl -qfsSL 'https://pub.ajam.dev/repos/Azathothas/Wordlists/Misc/legit_ps_linux.txt' | shuf 2>/dev/null | shuf -n 1 2>/dev/null | cut -c 1-100 2>/dev/null)" && export ZPROC="${ZPROC}"
 zproccer -f -a \'"${ZPROC}"\' curl -qfsSL "https://$INVENTORY_REPO_USER:$INVENTORY_REPO_TOKEN@raw.githubusercontent.com/Azathothas/Inventory/main/.github/scripts/_init_deps.sh" -o "./_init_deps.sh"
 dos2unix --quiet "./_init_deps.sh" 2>/dev/null ; sudo chmod +xwr "./_init_deps.sh" ; source "./_init_deps.sh" >/dev/null 2>&1
 #----------------------------------------------------------------------------#
